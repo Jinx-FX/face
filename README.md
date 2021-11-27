@@ -7,7 +7,7 @@
 
 ## 我使用的系统 `Manjaro`
 
-![manjaro](/system_show.png)
+![manjaro](readme_use/system_show.png)
 
 ### Requirements
 ```sh
@@ -33,7 +33,7 @@ pip install opencv-python
 ### Demo
 1. test_obj.py
 
-![1.test-res](/obj_show/readme_use/1.test-res.jpg)
+![1.test-res](/readme_use/1.test-res.jpg)
 
 You can use mouse to move, rotate and scale it. And you may set lighting for a better viewing. You need to be familiar with opengl.
 
@@ -43,16 +43,10 @@ See the code to learn more. (eg. I use `pickle` to accelerate loading)
 
 2. test_mtl.py
 
-![2.test-res](/obj_show/readme_use/2.test-res.jpg)
-![2.test-res](/obj_show/readme_use/2.test-res-2.jpg)
-
-### References
-
-
-
+![2.test-res](/readme_use/2.test-res.jpg)
+![2.test-res](/readme_use/2.test-res-2.jpg)
 
 ## 移植到树梅派上（还未进行）
-
 
 ## 可能遇到的问题：
 
@@ -65,13 +59,13 @@ libGL error: failed to load driver: iris
 ```
 
 > 解决：[参考链接](https://github.com/conda-forge/gazebo-feedstock/issues/81) 
-> 
+>
 > 在 `×shrc` 配置文件中加入
 > ```sh
 > export LD_PRELOAD=/usr/lib/libstdc++.so.6 pyopengl
 > ```
 
-> 如果你用的是 win， 参考这个[链接](https://blog.csdn.net/qq_45362415/article/details/104531503)
+> 如果你用的是`win`， 参考这个[链接](https://blog.csdn.net/qq_45362415/article/details/104531503)
 
 
 # 参考与感谢 
@@ -80,5 +74,4 @@ libGL error: failed to load driver: iris
 - [OBJFileLoader](https://www.pygame.org/wiki/OBJFileLoader)
 - [BXT-AR-For-Python](https://gitee.com/791529351/BXT-AR4Python)
 - [facescape](https://facescape.nju.edu.cn/)
-
 
