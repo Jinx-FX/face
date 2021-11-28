@@ -12,6 +12,7 @@
 ### Requirements
 ```sh
 pip install pygame
+pip install deepface
 pip install PyOpenGL PyOpenGL_accelerate
 pip install numpy
 pip install opencv-python
