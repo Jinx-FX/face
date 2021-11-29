@@ -60,12 +60,12 @@ def run_ogl(fidr, fobj_pkl, fobj):
     cam.Ortho.bbox[:] = cam.Ortho.bbox * 13
     cam.Ortho.nf[:] = cam.Ortho.nf * 200
     # glOrtho(*cam.Ortho.params)
-    #gluPerspective(fovy=60, aspect=1, zNear=0.1, zFar=1000)
+    # gluPerspective(fovy=60, aspect=1, zNear=0.1, zFar=1000)
     gluPerspective(60, 1, 0.1, 10000)
 
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
-    #gluLookAt( eyex=0, eyey=0, eyez=100, centerx=0, centery=0, centerz=0, upx=0, upy=1, upz=0)
+    # gluLookAt( eyex=0, eyey=0, eyez=100, centerx=0, centery=0, centerz=0, upx=0, upy=1, upz=0)
     gluLookAt(0, 0, 800, 0, 0, 0, 0, 1, 0)
 
     rx, ry = (0, 0)
@@ -140,8 +140,8 @@ def run_ogl(fidr, fobj_pkl, fobj):
             draw_pos(param.pos3d)
 
         pygame.display.flip()
-
         time.sleep(3)
+        pygame.quit()
         break
 
 
@@ -189,7 +189,7 @@ if __name__ == "__main__":
     capture = cv.VideoCapture(0)
 
     # 人脸检测
-    while capture.isOpened:
+    while 1:
         e1 = cv.getTickCount()
         ret, frame = capture.read()
 
@@ -232,21 +232,25 @@ if __name__ == "__main__":
         if c == 27:
             break
 
-    cv.destroyAllWindows()
+        if emotion != "I can't understand you, sorry":
+            time.sleep(3)
+            cv.destroyAllWindows()
 
-       if emotion == "angry":
+        if emotion == "angry":
             fobj = "4_anger.obj"
         elif emotion == "fear":
-            pass
+            fobj = "13_lip_funneler"
         elif emotion == "sad":
             fobj = "14_sadness.obj"
         elif emotion == "disgust":
-            pass
+            fobj = "18_eye_closed.obj "
         elif emotion == "happy":
             fobj = "2_smile.obj"
         elif emotion == "surprise":
-            pass
+            fobj = "3_mouth_stretch.obj"
         else:
             fobj = "1_neutral.obj"
-
-        run_ogl(fidr, fobj_pkl, fobj)
+        while 1:
+            run_ogl(fidr, fobj_pkl, fobj)
+            break
+        time.sleep(3)
