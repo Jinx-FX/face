@@ -4,8 +4,7 @@ from chj.ogl.objloader import CHJ_tiny_obj, OBJ
 from chj.ogl import *
 import os
 import sys
-import cv2 as cv
-from deepface import DeepFace
+import time
 
 os.chdir(os.path.split(os.path.realpath(sys.argv[0]))[0])
 
@@ -13,7 +12,7 @@ model_bin = "/home/july/project/AR/face/face_detector/opencv_face_detector_uint8
 config_text = "/home/july/project/AR/face/face_detector/opencv_face_detector.pbtxt"
 
 fidr = "models_obj/"
-fobj = "14_sadness.obj"
+fobj = "3_mouth_stretch.obj"
 fobj_pkl = "chj/obj.pkl"
 
 
@@ -139,10 +138,9 @@ def run_ogl(fidr, fobj_pkl, fobj):
             draw_pos(param.pos3d)
 
         pygame.display.flip()
-
-        c = cv.waitKey(1)
-        if c == 27:
-            break
+        time.sleep(3)
+        pygame.quit()
+        break
 
 
 def pos_get_pos3d(pos):
@@ -184,5 +182,4 @@ def draw_pos(pos3d, size=10, color=[0, 1, 0]):
 
 
 if __name__ == "__main__":
-    while True:
-        run_ogl(fidr, fobj_pkl, fobj)
+    run_ogl(fidr, fobj_pkl, fobj)
