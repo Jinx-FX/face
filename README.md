@@ -25,6 +25,7 @@ pip install opencv-python
 目前只进行了人脸的检查，还未进行识别
 
 ### Demo
+
 1. face_detector.py
 
 ## 3D模型加载
