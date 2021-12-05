@@ -4,6 +4,7 @@ from chj.ogl.objloader import CHJ_tiny_obj, OBJ
 from chj.ogl import *
 import os
 import sys
+import cv2 as cv
 import time
 
 os.chdir(os.path.split(os.path.realpath(sys.argv[0]))[0])
@@ -138,9 +139,8 @@ def run_ogl(fidr, fobj_pkl, fobj):
             draw_pos(param.pos3d)
 
         pygame.display.flip()
-        time.sleep(3)
-        pygame.quit()
-        break
+        if cv.waitKey(1) == 27:
+            break
 
 
 def pos_get_pos3d(pos):
