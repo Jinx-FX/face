@@ -8,7 +8,10 @@ config_text = "/home/july/project/AR/face/face_detector/opencv_face_detector.pbt
 def video_detection():
     # load tensorflow model
     net = cv.dnn.readNetFromTensorflow(model_bin, config=config_text)
-    capture = cv.VideoCapture(0)
+    capture = cv.VideoCapture("01.mp4")
+    #  wCam, hCam = 70, 40
+    #  capture.set(3, wCam)
+    #  capture.set(4, hCam)
 
     # 人脸检测
     while capture.isOpened:
