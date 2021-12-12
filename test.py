@@ -74,75 +74,75 @@ def run_ogl(fidr, fobj_pkl, fobj):
     rotate = move = False
 
     # 开始渲染
-    while 1:
-        clock.tick(30)
-        for e in pygame.event.get():
-            if e.type == QUIT:
+    #  while 1:
+    clock.tick(30)
+    for e in pygame.event.get():
+        if e.type == QUIT:
+            sys.exit()
+        elif e.type == KEYDOWN:
+            if e.key == pygame.K_ESCAPE:
+                pygame.quit()
                 sys.exit()
-            elif e.type == KEYDOWN:
-                if e.key == pygame.K_ESCAPE:
-                    pygame.quit()
-                    sys.exit()
 
-                # elif e.key == pygame.K_s:
+            # elif e.key == pygame.K_s:
 
-                elif e.key == pygame.K_4:
-                    param.sel_pos = not param.sel_pos
+            elif e.key == pygame.K_4:
+                param.sel_pos = not param.sel_pos
 
-            elif e.type == MOUSEBUTTONDOWN:
+        elif e.type == MOUSEBUTTONDOWN:
 
-                pressed_array = pygame.mouse.get_pressed()
-                if pressed_array[0]:  # 左键被按下
-                    if param.sel_pos:
-                        pos = pygame.mouse.get_pos()  # 获得鼠标位置
-                        pos_get_pos3d_show(pos)
+            pressed_array = pygame.mouse.get_pressed()
+            if pressed_array[0]:  # 左键被按下
+                if param.sel_pos:
+                    pos = pygame.mouse.get_pos()  # 获得鼠标位置
+                    pos_get_pos3d_show(pos)
 
-                if e.button == 4:
-                    zpos = max(1, zpos - 1)
-                elif e.button == 5:
-                    zpos += 1
-                elif e.button == 1:
-                    rotate = True
-                elif e.button == 3:
-                    move = True
-            elif e.type == MOUSEBUTTONUP:
-                if e.button == 1:
-                    rotate = False
-                elif e.button == 3:
-                    move = False
-            elif e.type == MOUSEMOTION:
-                # p(e.rel)
-                i, j = e.rel
-                if rotate:
-                    rx -= i
-                    ry -= j
-                if move:
-                    tx += i
-                    ty -= j
+            if e.button == 4:
+                zpos = max(1, zpos - 1)
+            elif e.button == 5:
+                zpos += 1
+            elif e.button == 1:
+                rotate = True
+            elif e.button == 3:
+                move = True
+        elif e.type == MOUSEBUTTONUP:
+            if e.button == 1:
+                rotate = False
+            elif e.button == 3:
+                move = False
+        elif e.type == MOUSEMOTION:
+            # p(e.rel)
+            i, j = e.rel
+            if rotate:
+                rx -= i
+                ry -= j
+            if move:
+                tx += i
+                ty -= j
 
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-        glLoadIdentity()
-        # RENDER OBJECT
-        glTranslate(tx / 20., ty / 20., - zpos)
-        glRotate(ry / 5, 1, 0, 0)
-        glRotate(rx / 5, 0, 1, 0)
+    glLoadIdentity()
+    # RENDER OBJECT
+    glTranslate(tx / 20., ty / 20., - zpos)
+    glRotate(ry / 5, 1, 0, 0)
+    glRotate(rx / 5, 0, 1, 0)
 
-        # glRotate(180, 0, 1, 0)  # 这个是通过观察得到的
-        s = [2 / obj.bbox_half_r] * 3
-        glScale(*s)
+    # glRotate(180, 0, 1, 0)  # 这个是通过观察得到的
+    s = [2 / obj.bbox_half_r] * 3
+    glScale(*s)
 
-        t = -obj.bbox_center
-        glTranslate(*t)
+    t = -obj.bbox_center
+    glTranslate(*t)
 
-        glCallList(obj.gl_list)
-        if hasattr(param, 'pos3d') and param.sel_pos:
-            draw_pos(param.pos3d)
+    glCallList(obj.gl_list)
+    if hasattr(param, 'pos3d') and param.sel_pos:
+        draw_pos(param.pos3d)
 
-        pygame.display.flip()
-        time.sleep(3)
-        pygame.quit()
-        break
+    pygame.display.flip()
+    #  time.sleep(3)
+    #  pygame.quit()
+    #  break
 
 
 def pos_get_pos3d(pos):
@@ -238,14 +238,10 @@ if __name__ == "__main__":
         if c == 27:
             break
 
-        if emotion != "I can't understand you, sorry":
-            time.sleep(3)
-            cv.destroyAllWindows()
-
         if emotion == "angry":
             fobj = "4_anger.obj"
         elif emotion == "fear":
-            fobj = "13_lip_funneler"
+            fobj = "13_lip_funneler.obj"
         elif emotion == "sad":
             fobj = "14_sadness.obj"
         elif emotion == "disgust":
@@ -256,7 +252,9 @@ if __name__ == "__main__":
             fobj = "3_mouth_stretch.obj"
         else:
             fobj = "1_neutral.obj"
-        while 1:
-            run_ogl(fidr, fobj_pkl, fobj)
-            break
-        time.sleep(1)
+        #  while 1:
+        run_ogl(fidr, fobj_pkl, fobj)
+        #  break
+        #  time.sleep(1)
+
+    cv.destroyAllWindows()
