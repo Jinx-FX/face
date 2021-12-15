@@ -56,7 +56,7 @@ def run_ogl(fidr, fobj_pkl, fobj):
     cam.Ortho.bbox[:] = cam.Ortho.bbox * 13
     cam.Ortho.nf[:] = cam.Ortho.nf * 200
     # glOrtho(*cam.Ortho.params)
-    #gluPerspective(fovy=60, aspect=1, zNear=0.1, zFar=1000)
+    # gluPerspective(fovy=60, aspect=1, zNear=0.1, zFar=1000)
     gluPerspective(60, 1, 0.1, 10000)
 
     glMatrixMode(GL_MODELVIEW)
