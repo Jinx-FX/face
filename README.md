@@ -8,7 +8,7 @@
         - [Demo](#demo)
     * [3D模型加载](#3d模型加载)
         - [Demo](#demo)
-    * [移植到树霉派上](#移植到树霉派上)
+    * [移植到树莓派上](#移植到树莓派上)
         - [基础配置](#基础配置)
         - [实现环境配置](#实现环境配置)
     * [可能遇到的问题：](#可能遇到的问题：)
@@ -62,11 +62,11 @@ You can use mouse to move, rotate and scale it. And you may set lighting for a b
 
 See the code to learn more. (eg. I use `pickle` to accelerate loading)
 
-## 移植到树霉派上
+## 移植到树莓派上
 
-其实并不推荐使用树霉派，它的处理速度着实慢。很多地方都会卡。
+其实并不推荐使用树莓派，它的处理速度着实慢。很多地方都会卡。
 
-我使用的是树霉派官方的系统(这里跳过安装)。
+我使用的是树莓派官方的系统(这里跳过安装)。
 
 ### 基础配置
 
@@ -84,7 +84,9 @@ See the code to learn more. (eg. I use `pickle` to accelerate loading)
     deb-src http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main
     ```
 
-    3. 更新软件源`sudo apt-get uopdate`.推荐软件
+    3. 更新软件源`sudo apt-get uopdate`.
+
+    推荐软件
         - ranger:终端文件管理器
         - vim 或 neovim:编辑器
         - python3, python3-dev:编程环境
@@ -107,7 +109,7 @@ See the code to learn more. (eg. I use `pickle` to accelerate loading)
     > ```
 
 3. 其他配置，如打开vnc和摄像头，可以通过`sudo raspi-config`来实现。
-更多配置请参考 [树霉派实验室](https://shumeipai.nxez.com/hot-explorer#beginner)
+更多配置请参考 [树莓派实验室](https://shumeipai.nxez.com/hot-explorer#beginner)
 
 ### 实现环境配置
 
