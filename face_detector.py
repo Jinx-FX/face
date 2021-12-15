@@ -42,6 +42,7 @@ def video_detection():
                 cv.putText(frame, "score:%.2f" % score, (int(left), int(
                     top)), cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
 
+        # 识别人脸表情
         try:
             pred = DeepFace.analyze(frame, actions=['emotion'])
         except Exception:

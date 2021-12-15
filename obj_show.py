@@ -33,7 +33,8 @@ def run_ogl(fidr, fobj_pkl, fobj):
     param.sel_pos = False
 
     pygame.init()
-    viewport = (800, 800)
+    # 改变窗口大小
+    viewport = (70, 70)
     param.viewport = viewport
     screen = pygame.display.set_mode(viewport, OPENGL | DOUBLEBUF)
     param.screen = screen
