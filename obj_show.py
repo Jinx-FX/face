@@ -5,12 +5,8 @@ from chj.ogl import *
 import os
 import sys
 import cv2 as cv
-import time
 
 os.chdir(os.path.split(os.path.realpath(sys.argv[0]))[0])
-
-model_bin = "/home/july/project/AR/face/face_detector/opencv_face_detector_uint8.pb"
-config_text = "/home/july/project/AR/face/face_detector/opencv_face_detector.pbtxt"
 
 fidr = "models_obj/"
 fobj = "3_mouth_stretch.obj"

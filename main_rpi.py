@@ -74,7 +74,6 @@ def run_ogl(fidr, fobj_pkl, fobj):
     rotate = move = False
 
     # 开始渲染
-    #  while 1:
     clock.tick(30)
     for e in pygame.event.get():
         if e.type == QUIT:
@@ -190,9 +189,9 @@ if __name__ == "__main__":
     capture = cv.VideoCapture(0)
     #  capture.set(5, 20000)
     #  capture.set(7, 100000000)
-    #  wCam, hCam = 640, 480
-    #  capture.set(3, wCam)
-    #  capture.set(4, hCam)
+    wCam, hCam = 640, 480
+    capture.set(3, wCam)
+    capture.set(4, hCam)
 
     # 人脸检测
     while 1:
@@ -234,10 +233,6 @@ if __name__ == "__main__":
                    cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 255), 2)
         cv.imshow('face-detection-demo', frame)
 
-        c = cv.waitKey(1)
-        if c == 27:
-            break
-
         if emotion == "angry":
             fobj = "4_anger.obj"
         elif emotion == "fear":
@@ -252,9 +247,10 @@ if __name__ == "__main__":
             fobj = "3_mouth_stretch.obj"
         else:
             fobj = "1_neutral.obj"
-        #  while 1:
+
         run_ogl(fidr, fobj_pkl, fobj)
-        #  break
-        #  time.sleep(1)
+
+        if cv.waitKey(1) == 27:
+            break
 
     cv.destroyAllWindows()
