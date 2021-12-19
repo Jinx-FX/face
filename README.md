@@ -4,6 +4,7 @@
 + [基于三维人脸数据的AR互动平台开发](#基于三维人脸数据的ar互动平台开发)
     * [我使用的系统 `Manjaro`](#我使用的系统-`manjaro`)
         - [Requirements](#requirements)
+        - [运行示例](#运行示例)
     * [人脸表情实时识别](#人脸表情实时识别)
         - [Demo](#demo)
     * [3D模型加载](#3d模型加载)
@@ -31,9 +32,16 @@
 ```sh
 pip install pygame
 pip install deepface
+pip install tensorflow
 pip install PyOpenGL PyOpenGL_accelerate
 pip install numpy
 pip install opencv-python
+```
+
+### 运行示例
+
+```sh
+python3 main.py
 ```
 
 ## 人脸表情实时识别
@@ -108,7 +116,17 @@ See the code to learn more. (eg. I use `pickle` to accelerate loading)
     > }
     > ```
 
-3. 其他配置，如打开vnc和摄像头，可以通过`sudo raspi-config`来实现。
+3. 添加3.5寸显示屏驱动
+
+```sh
+sudo rm -rf LCD-show
+git clone https://github.com/goodtft/LCD-show.git
+chmod -R 755 LCD-show
+cd LCD-show/
+sudo ./LCD35-show
+```
+
+4. 其他配置，如打开vnc和摄像头，可以通过`sudo raspi-config`来实现。
 更多配置请参考 [树莓派实验室](https://shumeipai.nxez.com/hot-explorer#beginner)
 
 ### 实现环境配置
