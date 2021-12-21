@@ -6,7 +6,6 @@ import os
 import sys
 import cv2 as cv
 from deepface import DeepFace
-import time
 
 os.chdir(os.path.split(os.path.realpath(sys.argv[0]))[0])
 
@@ -139,9 +138,6 @@ def run_ogl(fidr, fobj_pkl, fobj):
         draw_pos(param.pos3d)
 
     pygame.display.flip()
-    #  time.sleep(3)
-    #  pygame.quit()
-    #  break
 
 
 def pos_get_pos3d(pos):

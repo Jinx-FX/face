@@ -6,7 +6,6 @@ import os
 import sys
 import cv2 as cv
 from deepface import DeepFace
-import time
 
 os.chdir(os.path.split(os.path.realpath(sys.argv[0]))[0])
 
@@ -139,9 +138,6 @@ def run_ogl(fidr, fobj_pkl, fobj):
         draw_pos(param.pos3d)
 
     pygame.display.flip()
-    #  time.sleep(3)
-    #  pygame.quit()
-    #  break
 
 
 def pos_get_pos3d(pos):
@@ -187,8 +183,6 @@ if __name__ == "__main__":
     # load tensorflow model
     net = cv.dnn.readNetFromTensorflow(model_bin, config=config_text)
     capture = cv.VideoCapture(0)
-    #  capture.set(5, 20000)
-    #  capture.set(7, 100000000)
     wCam, hCam = 640, 480
     capture.set(3, wCam)
     capture.set(4, hCam)
