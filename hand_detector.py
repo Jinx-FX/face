@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*
+#  need mediapipe
 from chj.ogl import light
 from chj.ogl.objloader import CHJ_tiny_obj, OBJ
 from chj.ogl import *

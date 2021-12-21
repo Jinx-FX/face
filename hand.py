@@ -1,3 +1,4 @@
+#  need mediapipe
 import cv2
 from cvzone.HandTrackingModule import HandDetector
 import math
