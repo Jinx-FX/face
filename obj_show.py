@@ -92,20 +92,23 @@ def run_ogl(fidr, fobj_pkl, fobj):
                     if param.sel_pos:
                         pos = pygame.mouse.get_pos()  # 获得鼠标位置
                         pos_get_pos3d_show(pos)
-
+                # 控制放大缩小
                 if e.button == 4:
                     zpos = max(1, zpos - 1)
                 elif e.button == 5:
                     zpos += 1
+
                 elif e.button == 1:
                     rotate = True
                 elif e.button == 3:
                     move = True
+            # 使鼠标按下才进行相应操作
             elif e.type == MOUSEBUTTONUP:
                 if e.button == 1:
                     rotate = False
                 elif e.button == 3:
                     move = False
+            # 旋转
             elif e.type == MOUSEMOTION:
                 # p(e.rel)
                 i, j = e.rel
@@ -136,8 +139,6 @@ def run_ogl(fidr, fobj_pkl, fobj):
             draw_pos(param.pos3d)
 
         pygame.display.flip()
-        if cv.waitKey(1) == 27:
-            break
 
 
 def pos_get_pos3d(pos):
