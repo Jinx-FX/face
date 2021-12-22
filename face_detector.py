@@ -9,9 +9,6 @@ def video_detection():
     # load tensorflow model
     net = cv.dnn.readNetFromTensorflow(model_bin, config=config_text)
     capture = cv.VideoCapture(0)
-    #  wCam, hCam = 70, 40
-    #  capture.set(3, wCam)
-    #  capture.set(4, hCam)
 
     # 人脸检测
     while capture.isOpened:
@@ -46,7 +43,7 @@ def video_detection():
         try:
             pred = DeepFace.analyze(frame, actions=['emotion'])
         except Exception:
-            emotion = "I can't understand you, sorry"
+            emotion = "*****"
         else:
             emotion = pred['dominant_emotion']
 

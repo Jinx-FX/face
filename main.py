@@ -23,7 +23,8 @@ class param(object):
 
 def run_ogl(fidr, fobj_pkl, fobj):
     # ugly： 第一次加载写 1==1， 如果仍用同一个模型，第二次写 1 == 0
-    if 1 == 1:
+    global obj
+    if fobj != obj.fobj:
         obj = OBJ(fidr, fobj, swapyz=False)
         obj.create_bbox()
 
@@ -180,6 +181,7 @@ def draw_pos(pos3d, size=10, color=[0, 1, 0]):
 
 if __name__ == "__main__":
 
+    obj = OBJ(fidr, "1_neutral.obj", swapyz=False)
     # load tensorflow model
     net = cv.dnn.readNetFromTensorflow(model_bin, config=config_text)
     capture = cv.VideoCapture(0)
@@ -216,7 +218,7 @@ if __name__ == "__main__":
         try:
             pred = DeepFace.analyze(frame, actions=['emotion'])
         except Exception:
-            emotion = "I can't understand you, sorry"
+            emotion = "*****"
         else:
             emotion = pred['dominant_emotion']
 

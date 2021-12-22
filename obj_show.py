@@ -4,13 +4,12 @@ from chj.ogl.objloader import CHJ_tiny_obj, OBJ
 from chj.ogl import *
 import os
 import sys
-import cv2 as cv
 
 os.chdir(os.path.split(os.path.realpath(sys.argv[0]))[0])
 
 fidr = "models_obj/"
 fobj = "3_mouth_stretch.obj"
-fobj_pkl = "chj/obj.pkl" # 用于缓存文件
+fobj_pkl = "chj/obj.pkl"  # 用于缓存文件
 
 
 class param(object):

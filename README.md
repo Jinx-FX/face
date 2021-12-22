@@ -9,6 +9,8 @@
         - [Demo](#demo)
     * [3D模型加载](#3d模型加载)
         - [Demo](#demo)
+    * [手掌交互](#手掌交互)
+        - [Demo](#demo)
     * [移植到树莓派上](#移植到树莓派上)
         - [基础配置](#基础配置)
         - [实现环境配置](#实现环境配置)
@@ -21,7 +23,7 @@
 根据已有的三维人脸数据，开发一款基于普通投影仪或显示器和普通相机的人机交互系统，要求
 1. 实现三维人脸的渲染和显示；
 2. 能识别相机前实时采集的面部表情，比如大笑、沮丧等；能根据面部表情变化对应调整三维人脸数据；
-3. 手掌交互
+3. 手掌交互,检查手掌到摄像头的距离对三维模型进行放大或缩小
 
 ## 我使用的系统 `Manjaro`
 
@@ -55,6 +57,8 @@ by deepface
 
 ## 3D模型加载
 
+by pygame pyopengl
+
 使用`pyopengl`进行3d模型的加载
 
 ### Demo
@@ -63,11 +67,28 @@ by deepface
 
 ![](/readme_use/obj_show_test.png)
 
+2. light.py 用于设置光照和相机
+
+3. objloader.py 用于加载模型和纹理
+
 You can use mouse to move, rotate and scale it. And you may set lighting for a better viewing. You need to be familiar with opengl.
 
 (鼠标移动，自行设置光照，具体可以看代码)
 
-See the code to learn more. (eg. I use `pickle` to accelerate loading)
+See the code to learn more. (eg. I use `pickle` to accelerate loading, obj.pkl 即缓存文件)
+
+## 手掌交互
+
+by mediapipe cvzone
+
+根据手掌到摄像头的距离使三维人脸模型放大或缩小
+
+原理：根据手掌某两点的距离与实际到摄像头的距离拟合一个关于x和y的函数,
+再根据这个函数去判断距离
+
+### Demo
+
+1. hand_detector.py
 
 ## 移植到树莓派上
 
@@ -94,8 +115,11 @@ See the code to learn more. (eg. I use `pickle` to accelerate loading)
     3. 更新软件源`sudo apt-get uopdate`.
 
     推荐软件
+
         - ranger:终端文件管理器
+
         - vim 或 neovim:编辑器
+
         - python3, python3-dev:编程环境
 
 2. 无线网络配置
@@ -177,4 +201,4 @@ libGL error: failed to load driver: iris
 - [OBJFileLoader](https://www.pygame.org/wiki/OBJFileLoader)
 - [BXT-AR-For-Python](https://gitee.com/791529351/BXT-AR4Python)
 - [facescape](https://facescape.nju.edu.cn/)
-
+- [Fata-DL](https://github.com/Fafa-DL/Opencv-project)
