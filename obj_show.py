@@ -10,7 +10,7 @@ os.chdir(os.path.split(os.path.realpath(sys.argv[0]))[0])
 
 fidr = "models_obj/"
 fobj = "3_mouth_stretch.obj"
-fobj_pkl = "chj/obj.pkl"
+fobj_pkl = "chj/obj.pkl" # 用于缓存文件
 
 
 class param(object):

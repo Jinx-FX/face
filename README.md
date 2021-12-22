@@ -21,7 +21,7 @@
 根据已有的三维人脸数据，开发一款基于普通投影仪或显示器和普通相机的人机交互系统，要求
 1. 实现三维人脸的渲染和显示；
 2. 能识别相机前实时采集的面部表情，比如大笑、沮丧等；能根据面部表情变化对应调整三维人脸数据；
-3. 其他个性发挥延拓功能。
+3. 手掌交互
 
 ## 我使用的系统 `Manjaro`
 
@@ -30,12 +30,11 @@
 ### Requirements
 
 ```sh
-pip install pygame
-pip install deepface
-pip install tensorflow
-pip install PyOpenGL PyOpenGL_accelerate
+pip install pygame PyOpenGL PyOpenGL_accelerate
+pip install deepface tensorflow
 pip install numpy
 pip install opencv-python
+pip install mediapipe cvzone
 ```
 
 ### 运行示例
