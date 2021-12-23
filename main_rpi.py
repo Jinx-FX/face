@@ -185,9 +185,9 @@ if __name__ == "__main__":
     # load tensorflow model
     net = cv.dnn.readNetFromTensorflow(model_bin, config=config_text)
     capture = cv.VideoCapture(0)
-    wCam, hCam = 640, 480
-    capture.set(3, wCam)
-    capture.set(4, hCam)
+    #  wCam, hCam = 640, 480
+    #  capture.set(3, wCam)
+    #  capture.set(4, hCam)
 
     # 人脸检测
     while 1:
