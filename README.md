@@ -11,9 +11,6 @@
         - [Demo](#demo)
     * [手掌交互](#手掌交互)
         - [Demo](#demo)
-    * [移植到树莓派上](#移植到树莓派上)
-        - [基础配置](#基础配置)
-        - [实现环境配置](#实现环境配置)
     * [可能遇到的问题：](#可能遇到的问题：)
 + [参考与感谢](#参考与感谢)
 
@@ -90,68 +87,6 @@ by mediapipe cvzone
 
 1. hand_detector.py
 
-## 移植到树莓派上
-
-其实并不推荐使用树莓派，它的处理速度着实慢。很多地方都会卡。
-
-我使用的是树莓派官方的系统(这里跳过安装)。
-
-### 基础配置
-
-1. 更换软件源（这里使用的是清华的源）
-
-    1. `sudo nano /etc/apt/sources.list`注释掉原来的源，加上
-    ```sh
-    deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi
-    deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main non-free contrib rpi
-    ```
-
-    2. `sudo nano /etc/apt/sources.list.d/raspi.list`同样注释掉原来的源，加上
-    ```sh
-    deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main
-    deb-src http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main
-    ```
-
-    3. 更新软件源`sudo apt-get uopdate`.
-
-    推荐软件
-
-        - ranger:终端文件管理器
-
-        - vim 或 neovim:编辑器
-
-        - python3, python3-dev:编程环境
-
-2. 无线网络配置
-
-    1. 有屏幕的话直接连接，不用多说
-
-    2. 没有屏幕如何链接
-    > 如果遇到中文wifi可能也无法直接连接。
-    > 可以通过修改配置文件的方式来实现
-    >
-    > sudo vim /etc/wpa_supplicant/wpa_supplicant.conf
-    > ```sh
-    > network={
-    >    ssid="ssid_name"
-    >    key_mgmt=WPA-PSK
-    >    psk="password"
-    > }
-    > ```
-
-3. 添加3.5寸显示屏驱动
-
-```sh
-sudo rm -rf LCD-show
-git clone https://github.com/goodtft/LCD-show.git
-chmod -R 755 LCD-show
-cd LCD-show/
-sudo ./LCD35-show
-```
-
-4. 其他配置，如打开vnc和摄像头，可以通过`sudo raspi-config`来实现。
-更多配置请参考 [树莓派实验室](https://shumeipai.nxez.com/hot-explorer#beginner)
-
 ### 实现环境配置
 
 1. pip 换源(也可以不换),然后依次安装上面的python库
@@ -162,8 +97,8 @@ sudo apt-get install build-essential # 基本编译环境
 sudo apt-get install libgl1-mesa-dev # opengl library
 sudo apt-get install libglu1-mesa-dev # opengl utilities
 sudo apt-get install libglut-dev # opengl utilities toolkit
-
 ```
+
 需要注意的是:第四步可能会有报错,像如下
 ```sh
 Reading package lists… Done
